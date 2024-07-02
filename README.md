@@ -21,6 +21,10 @@ This repository contains an Apache Airflow DAG designed to continuously train a 
   - BigQuery Admin
   - Logging Admin
 
+## Set Up
+bigquery_table_creation.sql file contains queries that should be run in Big Query UI where it creates the schema and table. Plus, the file dags_airflow.py, is ought to be uploaded to Airflow working directory of the created cloud composer instance (airflow) where it automatically creates the dags and pipeline.
+
+
 ## DAG Overview
 
 The DAG is defined in `dag_hamspam_continuous_training.py` and consists of two main tasks: `extract_and_preprocess` and `train_model`.
