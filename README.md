@@ -4,15 +4,11 @@ This repository contains an Apache Airflow DAG designed to continuously train a 
 
 ## Overview
 
--The HamSpam Detection Continuous Training DAG performs the following steps:
-
--Extracts and preprocesses data from Google Cloud Storage.
-
--Trains a RandomForestClassifier model using scikit-learn.
-
--Saves the trained model back to Google Cloud Storage.
-
--Logs training metrics to Google Cloud Logging and BigQuery.
+- The HamSpam Detection Continuous Training DAG performs the following steps:
+- Extracts and preprocesses data from Google Cloud Storage.
+- Trains a RandomForestClassifier model using scikit-learn.
+- Saves the trained model back to Google Cloud Storage.
+- Logs training metrics to Google Cloud Logging and BigQuery.
 
 ## Prerequisites
 
@@ -24,3 +20,39 @@ This repository contains an Apache Airflow DAG designed to continuously train a 
   - Storage Admin
   - BigQuery Admin
   - Logging Admin
+
+## DAG Overview
+
+The DAG is defined in `dag_hamspam_continuous_training.py` and consists of two main tasks: `extract_and_preprocess` and `train_model`.
+
+### Tasks
+
+#### extract_and_preprocess
+
+- Extracts data from the specified Cloud Storage bucket.
+- Preprocesses the data by adding features and saves the preprocessed data back to Cloud Storage.
+- Logs the preprocessing status to Cloud Logging.
+
+#### train_model
+
+- Reads the preprocessed data from Cloud Storage.
+- Trains a RandomForestClassifier model using scikit-learn.
+- Saves the trained model to Cloud Storage.
+- Logs training metrics (confusion matrix, classification report, accuracy) to Cloud Logging and BigQuery.
+
+## Logging and Monitoring
+
+The DAG uses Google Cloud Logging to log messages and Google BigQuery to store model metrics.
+
+- **Google Cloud Logging**: Logs information about preprocessing and training steps, including timestamps and descriptions.
+- **Google BigQuery**: Stores model metrics (e.g., classification report) in a specified table for further analysis.
+
+### Example Log Entry
+
+```json
+{
+  "keyword": "HamSpam_Detector",
+  "description": "Training done!",
+  "training_timestamp": "2023-07-01T12:34:56.789Z",
+  "model_output_msg": "READY!"
+}
