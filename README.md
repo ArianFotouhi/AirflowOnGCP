@@ -26,7 +26,7 @@ bigquery_table_creation.sql file contains queries that should be run in Big Quer
 
 
 Airflow in Cloud Composer:
-![CC Image]([https://github.com/ArianFotouhi/AirflowOnGCP/blob/main/assets/CloudComposer.png?raw=true))
+![CC Image]([https://github.com/ArianFotouhi/AirflowOnGCP/blob/main/assets/CloudComposer.png?raw=true])
 
 Created files in Google Storage:
 ![GS Image]([https://github.com/ArianFotouhi/AirflowOnGCP/blob/main/assets/GoogleStorage.png?raw=true))
